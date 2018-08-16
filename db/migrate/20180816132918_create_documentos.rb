@@ -6,6 +6,7 @@ class CreateDocumentos < ActiveRecord::Migration[5.1]
     #  t.enum status: [:validado, :rechazado], _suffix: true
     t.string :estado
     #  t.enum status: { validado: 0, rechazado: 1 }
+    t.string :tipo  
       t.timestamps
     end
   end
