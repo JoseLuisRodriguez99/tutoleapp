@@ -1,6 +1,6 @@
-class CreateMaterias < ActiveRecord::Migration[5.1]
+class CreateMateria < ActiveRecord::Migration[5.1]
   def change
-    create_table :materias do |t|
+    create_table :materia do |t|
       t.string :nombre
       t.references :area, foreign_key: true
 

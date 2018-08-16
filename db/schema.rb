@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180815153653) do
+ActiveRecord::Schema.define(version: 20180816134629) do
 
   create_table "areas", force: :cascade do |t|
     t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "calificacions", force: :cascade do |t|
+    t.integer "valor"
+    t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documentos", force: :cascade do |t|
+    t.string "archivo"
+    t.string "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +45,18 @@ ActiveRecord::Schema.define(version: 20180815153653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_materia_on_area_id"
+  end
+
+  create_table "tutoria", force: :cascade do |t|
+    t.datetime "fecha"
+    t.string "descripcion"
+    t.float "presupuesto"
+    t.integer "lugar_id"
+    t.integer "materia_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lugar_id"], name: "index_tutoria_on_lugar_id"
+    t.index ["materia_id"], name: "index_tutoria_on_materia_id"
   end
 
   create_table "usuarios", force: :cascade do |t|

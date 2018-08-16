@@ -1,5 +1,5 @@
 class UsuarioController < ApplicationController
-    before_action :set_todo, only: [:show, :update, :destroy]
+    before_action :set_todo, only: [:show, :update, :destroy]d
 
     # GET /todos
     def index
