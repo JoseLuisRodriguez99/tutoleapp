@@ -1,5 +1,5 @@
 class DocumentosController < ApplicationController
-    before_action :set_materia, only: [:show, :update, :destroy]
+    before_action :set_documento, only: [:show, :update, :destroy]
   
     def index
       @documentos = Documento.all
@@ -8,7 +8,7 @@ class DocumentosController < ApplicationController
   
     def create
       puts documento_params
-      @documento = Documento.create!(materia_params)
+      @documento = Documento.create!(documento_params)
       json_response(@documento, :created)
     end
   
@@ -17,7 +17,7 @@ class DocumentosController < ApplicationController
     end
   
     def update
-      @documento.update(materia_params)
+      @documento.update(documento_params)
       head :no_content
     end
   
@@ -30,7 +30,7 @@ class DocumentosController < ApplicationController
   
     def documento_params
       # whitelist params
-      params.permit(:usuario_id, tipo, archivo, estado )
+      params.permit(:tipo, :archivo, :estado )
     end
   
     def set_documento

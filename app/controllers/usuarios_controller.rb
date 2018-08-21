@@ -1,44 +1,44 @@
-class UsuarioController < ApplicationController
-    before_action :set_todo, only: [:show, :update, :destroy]d
+class UsuariosController < ApplicationController
+    before_action :set_usuario, only: [:show, :update, :destroy]
 
-    # GET /todos
+    # GET /usuarios
     def index
-      @todos = Todo.all
-      json_response(@todos)
+      @usuarios =Usuario.all
+      json_response(@usuarios)
     end
   
-    # POST /todos
+    # POST /usuarios
     def create
-      @todo = Todo.create!(todo_params)
-      json_response(@todo, :created)
+      @usuario = Usuario.create!(usuario_params)
+      json_response(@usuario, :created)
     end
   
-    # GET /todos/:id
+    # GET /usuarios/:id
     def show
-      json_response(@todo)
+      json_response(@usuario)
     end
   
-    # PUT /todos/:id
+    # PUT /usuarios/:id
     def update
-      @todo.update(todo_params)
+      @usuario.update(usuario_params)
       head :no_content
     end
   
-    # DELETE /todos/:id
+    # DELETE /usuarios/:id
     def destroy
-      @todo.destroy
+      @usuario.destroy
       head :no_content
     end
   
     private
   
-    def todo_params
+    def usuario_params
       # whitelist params
-      params.permit(:title, :created_by)
+      params.permit(:nombre,:documento, :direccion, :telefono, :email,:tipo_usuario, :nivel_academico)
     end
   
-    def set_todo
-      @todo = Todo.find(params[:id])
+    def set_usuario
+      @usuario = Usuario.find(params[:id])
     end
 
 end

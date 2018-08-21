@@ -2,8 +2,9 @@ class MateriaController < ApplicationController
   before_action :set_materia, only: [:show, :update, :destroy]
 
   def index
-    @materias = Materium.all
-    json_response(@materias)
+    area = Area.find(params[:area_id])
+    # @materias = Materium.all
+    json_response(area.materia)
   end
 
   def create

@@ -21,13 +21,18 @@ ActiveRecord::Schema.define(version: 20180816134629) do
   create_table "calificacions", force: :cascade do |t|
     t.integer "valor"
     t.string "descripcion"
+    t.integer "usuario_estudiante_id"
+    t.integer "usuario_docente_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["usuario_docente_id"], name: "index_calificacions_on_usuario_docente_id"
+    t.index ["usuario_estudiante_id"], name: "index_calificacions_on_usuario_estudiante_id"
   end
 
   create_table "documentos", force: :cascade do |t|
     t.string "archivo"
     t.string "estado"
+    t.string "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,10 +58,14 @@ ActiveRecord::Schema.define(version: 20180816134629) do
     t.float "presupuesto"
     t.integer "lugar_id"
     t.integer "materia_id"
+    t.integer "usuario_estudiante_id"
+    t.integer "usuario_docente_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lugar_id"], name: "index_tutoria_on_lugar_id"
     t.index ["materia_id"], name: "index_tutoria_on_materia_id"
+    t.index ["usuario_docente_id"], name: "index_tutoria_on_usuario_docente_id"
+    t.index ["usuario_estudiante_id"], name: "index_tutoria_on_usuario_estudiante_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -65,6 +74,8 @@ ActiveRecord::Schema.define(version: 20180816134629) do
     t.string "direccion"
     t.string "telefono"
     t.string "email"
+    t.string "tipo_usuario"
+    t.string "nivel_academico"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
